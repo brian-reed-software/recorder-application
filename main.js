@@ -103,8 +103,7 @@ function stop() {
 
 function start(){
 
-  console.log("Recording for " + Number(document.getElementById("valueNumber").value) * 1 + " minutes"),
-  
+  log("Recording...")
     navigator.mediaDevices.getUserMedia({
     
     video: false,
