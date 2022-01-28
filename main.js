@@ -128,7 +128,7 @@ function start(){
     downloadButton.download = "RecordedVideo.mp3";
 
     log("Successfully recorded " + recordedBlob.size + " bytes of " +
-        recordedBlob.type + " media.");
+      recordedBlob.type + " media." , document.getElementById("downloadButton").style.display = "flex");
   })
   
   .catch(log);
