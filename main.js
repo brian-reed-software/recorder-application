@@ -99,7 +99,9 @@ function stop() {
 
 }
 
-function start(){
+
+
+function start() {
 
   console.log("Recording for " + Number(document.getElementById("valueNumber").value) * 1 + " minutes"),
   

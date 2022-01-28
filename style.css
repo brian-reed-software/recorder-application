@@ -5,10 +5,13 @@
   align-items:center;
   justify-content:center;
   flex-direction:column;
-  background-color:black;
+  background-color:101020;
   color:white;
  }
 
+video{
+  height:10px;
+ }
 #valueNumber{
   width:100px;
   background-color: transparent;
@@ -24,7 +27,7 @@
   align-items:center;
   justify-content:center;
   flex-direction:column;
-  box-shadow: inset 0 0 200px 100px black, 0 0 2px 2px white;
+  box-shadow: inset 0 0 200px 70px black, 0 0 2px 2px white;
   color:white;
   background-color:#202530;
   filter: drop-shadow(0px 0px 50px white);
@@ -41,8 +44,8 @@
   justify-content:center;
   flex-direction:column;
   box-shadow: inset 0 0 50px 10px steelblue ,inset 0 0 5px 5px white,inset 0 0 10px 10px white,0 0 30px 10px black;
-  color:white;
-  background-color:steelblue;
+  color:black;
+  background-color:white;
   filter: drop-shadow(0px 0px 50px black);
   border-radius:20px;
   width:100%;
@@ -61,7 +64,7 @@
   filter: drop-shadow(0px 0px 5px black);
   width:100%;
   background-color: #202530;
-  box-shadow: inset 0 0 50px 00px steelblue,inset 0 0 10px 10px white,inset 0 0 5px 5px white;
+  box-shadow: inset 0 0 10px -5px white,inset 0 0 90px 00px steelblue,inset 0 0 30px 0px white,inset 0 0 5px 5px white;
   padding:20px;
 
 }
