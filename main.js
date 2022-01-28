@@ -97,6 +97,8 @@ function stop() {
   
   streams.getTracks().forEach(track => track.stop());
 
+  document.getElementById("downloadButton").style.display = "flex"
+
 }
 
 function start(){
