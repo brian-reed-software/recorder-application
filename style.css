@@ -18,7 +18,7 @@ video{
 }
 
 #recorderTitle{
-  margin-bottom:-5px;
+  margin-bottom:-50px;
   color: white;
   text-shadow: 0px 0px 5px black;
   letter-spacing: 10px;
@@ -58,8 +58,9 @@ video{
   width:100%;
   max-width:500px;
   height:80%;
-  background-image: url('https://source.unsplash.com/900x900/?sunset');
-  }
+  background-image: url('https://source.unsplash.com/900x900/?stars');
+    padding-top: 86px;  
+}
 
 #secondContainer{
   
@@ -84,6 +85,9 @@ video{
   margin-top:10%;
   margin-bottom:10%;
   height:100px;
+  display:flex;
+  align-items:center;
+  justify-content: center;
 }
 
 #setTime{
@@ -170,7 +174,7 @@ video {
 
 .button:hover {
    box-shadow: 0 0 10px 0px white, inset 0 0 3px 1px steelblue, 0 0 50px -5px steelblue;
-
+    border: solid 1px orange;
   color: orange;
 text-shadow: 0px 0px 5px black;
 }
