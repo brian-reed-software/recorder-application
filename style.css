@@ -17,6 +17,13 @@ video{
   background-color: transparent;
 }
 
+span{
+  background-color: white;
+  z-index: 10;
+  width:100%;
+  text-align: center;
+}
+
 #recorderTitle{
   margin-bottom:-50px;
   color: white;
@@ -50,8 +57,8 @@ video{
   align-items:center;
   justify-content:center;
   flex-direction:column;
-  box-shadow: inset 0 0 10px 5px black, inset 0 0 50px 10px steelblue ,inset 0 0 5px 5px white,inset 0 0 10px 10px white,0 0 30px 10px black;
-  color:black;
+   box-shadow: inset 0 0 5px 3px black,inset 0 0 5px 2px white, inset 0 0 10px -5px white,inset 0 0 90px 00px steelblue,inset 0 0 30px 0px white,inset 0 0 5px 5px white;
+ color:black;
   background-color:white;
   filter: drop-shadow(0px 0px 50px black);
   border-radius:20px;
@@ -59,7 +66,7 @@ video{
   max-width:500px;
   height:80%;
   background-image: url('https://source.unsplash.com/900x900/?stars');
-    padding-top: 86px;  
+  padding-top: 86px;  
 }
 
 #secondContainer{
@@ -73,7 +80,7 @@ video{
   filter: drop-shadow(0px 0px 5px black);
   width:100%;
   background-color: #202530;
-  box-shadow:  inset 0 0 10px -5px white,inset 0 0 90px 00px steelblue,inset 0 0 30px 0px white,inset 0 0 5px 5px white;
+  box-shadow:  inset 0 0 5px 2px white,inset 0 0 10px -5px white,inset 0 0 90px 00px steelblue,inset 0 0 30px 0px white,inset 0 0 5px 5px white;
   padding:20px;
   margin-bottom:100px;
   margin-top:50px;
