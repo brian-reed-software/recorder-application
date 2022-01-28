@@ -100,13 +100,6 @@
 <!-- 
               <h2>Preview</h2> -->
 
-              <video
-                id="preview"
-                width="1"
-                height="10"
-                autoplay
-                muted
-              ></video>
   
               <button onclick="stop()" id="stopButton" class="button">
                 Stop
@@ -114,16 +107,26 @@
 
               <!-- <h2>Recording</h2> -->
 
-              <video id="recording" width="1" height="1" controls></video>
-              
+               
               <a id="downloadButton" class="button"> Download </a>
-           
+           <div id="visualization">
+             Audio Visualization Will Go Here
+           </div>
             </div>
 
             <div class="bottom">
             <pre id="log"></pre>
           </div>
         </div>
+        
+              <video
+                id="preview"
+                width="1"
+                height="10"
+                autoplay
+                muted
+              ></video><video id="recording" width="1" height="1" controls></video>
+             
       </div>
     </body>
   </head>
