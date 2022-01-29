@@ -119,7 +119,12 @@ span{
   justify-content:center;  
 }
 
-#stopButton, #downloadButton{
+#stopButton{
+  margin-top:10px;
+  width:60%;
+  display:none;
+}
+#downloadButton{
   margin-top:10px;
   width:60%;
 }
@@ -157,10 +162,12 @@ video {
   border-radius:10px;
   height:100px;
 }
-
+#startButton, #stopButton{
+  align-items: center;
+  justify-content: center;
+}
 .button {
   cursor: pointer;
-  display: block;
   width: 160px;
   border: 1px solid black;
   font-size: 16px;
@@ -177,6 +184,8 @@ video {
   width:60%;
   letter-spacing: 5px;
   text-shadow: 0px 0px 5px black;
+  margin:20px;
+
 }
 
 button:hover {

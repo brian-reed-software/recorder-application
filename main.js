@@ -67,19 +67,23 @@ recorder.ondataavailable = event => data.push(event.data);
 
     recorder.onerror = event => reject(event.name);
 
+  document.getElementById("startButton").style.display = "none"
+      
+  document.getElementById("stopButton").style.display = "flex"
+
   });
 
- let record = recorder.state == "recording"
+  let record = recorder.state == "recording"
   
   // let recorded = wait(10000).then(
   //   () => recorder.state == "recording" && recorder.stop()
   // );
   
-console.log(recorder.state);
+   console.log(recorder.state);
   
-  return Promise.all([
+   return Promise.all([
 
-    stopped,
+   stopped,
     
     record
   
@@ -98,15 +102,30 @@ function stop() {
   streams.getTracks().forEach(track => track.stop());
 
   document.getElementById("downloadButton").style.display = "flex"
+  
+  let preview = document.getElementById("preview").srcObject;
+  
+  streams.srcObject
+
+  console.log(preview.srcObject)
+
+  log("Recording Loading")
+  
+  console.log("stopped")
+
+  document.getElementById("startButton").style.display = "flex"
+      
+  document.getElementById("stopButton").style.display = "none"
 
 }
 
 function start(){
 
-  log("Recording...")
+  console.log("Recording for " + Number(document.getElementById("valueNumber").value) * 1 + " minutes"),
+  
     navigator.mediaDevices.getUserMedia({
     
-    video: false,
+    video: true,
     
     audio: true
       
@@ -123,14 +142,15 @@ function start(){
     ))
   
     .then(recordedChunks => {
-    let recordedBlob = new Blob(recordedChunks, { type: "audio/mp3" });
+    let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
     recording.src = URL.createObjectURL(recordedBlob);
     downloadButton.href = recording.src;
-    downloadButton.download = "RecordedVideo.mp3";
+    downloadButton.download = "RecordedVideo.webm";
 
     log("Successfully recorded " + recordedBlob.size + " bytes of " +
       recordedBlob.type + " media." , document.getElementById("downloadButton").style.display = "flex");
-  })
+  
+    })
   
   .catch(log);
 }
@@ -165,7 +185,7 @@ if (navigator.mediaDevices) {
     
   console.log('getUserMedia supported.');
   
-  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  navigator.mediaDevices.getUserMedia({ audio: true, video: true })
   
     .then(function (stream) {
       

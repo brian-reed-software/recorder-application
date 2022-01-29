@@ -49,13 +49,11 @@
     <meta property='og:image' content='https://repository-images.githubusercontent.com/452489611/89cff234-cfea-4433-8e34-4009fa32a3ea'/>
     <meta property='og:description' content='An application that records audio and saves it as an MP3.'/>
     <meta property='og:url' content='https://recorder-app.netlify.app/'/>
-  
-    
 
     <span> Checkout my portfolio at : <a href="https://www.brian-reed.me"> www.brian-reed.me </a></span>
 
-
     <body>
+
       <div id="mainContainer">
 
         <div id="container">
@@ -90,9 +88,10 @@
               <br />
 
               <br />
+
             </div>
-<!-- 
-            <button onclick="clears()" id="clearButton" class="button">
+
+            <!-- <button onclick="clears()" id="clearButton" class="button">
               Clear
             </button> -->
 
@@ -101,38 +100,54 @@
               <button onclick="start()" id="startButton" class="button">
                 Start
               </button>
-<!-- 
-              <h2>Preview</h2> -->
-
-  
               <button onclick="stop()" id="stopButton" class="button">
                 Stop
               </button>
+<!-- 
+              <h2>Preview</h2> -->
+        
+              <video
+                id="preview"
+                width="200"
+                height="200"
+                autoplay
+                muted
+              >
+            </video>
+
+              <video id="recording" width="200" height="200" controls>
+
+            </video>
+  
+
 
               <!-- <h2>Recording</h2> -->
 
-               
-              <a id="downloadButton" class="button"> Download </a>
+            <button class="button" id="downloadButton">
+             Download
+             </button>
+                 
            <!-- <div id="visualization">
              Audio Visualization Will Go Here
            </div> -->
            
-            <pre id="log"></pre>
-            </div>
+            <pre id="log">
+
+            </pre>
+            
+          </div>
 
             <div class="bottom">
-          </div>
-        </div>
-        
-              <video
-                id="preview"
-                width="1"
-                height="10"
-                autoplay
-                muted
-              ></video><video id="recording" width="1" height="1" controls></video>
+            
+            </div>
+
+            </div>
+
              
       </div>
+
     </body>
+  
   </head>
-</html>
+
+  </html>
