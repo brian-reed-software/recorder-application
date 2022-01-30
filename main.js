@@ -43,19 +43,21 @@ function log(msg) {
 
 }
 
-function wait(delayInMS) {
+// function wait(delayInMS) {
 
-  return new Promise(resolve => setTimeout(resolve, delayInMS));
+//   return new Promise(resolve => setTimeout(resolve, delayInMS));
 
-}
+// }
 
 function startRecording(stream) {
+
   //
+  
   let recorder = new MediaRecorder(stream);
   
   let data = [];
 
-recorder.ondataavailable = event => data.push(event.data);
+  recorder.ondataavailable = event => data.push(event.data);
   
   recorder.start();
 
@@ -63,9 +65,9 @@ recorder.ondataavailable = event => data.push(event.data);
 
   let stopped = new Promise((resolve, reject) => {
     
-    recorder.onstop = resolve;
+  recorder.onstop = resolve;
 
-    recorder.onerror = event => reject(event.name);
+  recorder.onerror = event => reject(event.name);
 
   document.getElementById("startButton").style.display = "none"
       
@@ -76,7 +78,9 @@ recorder.ondataavailable = event => data.push(event.data);
   let record = recorder.state == "recording"
   
   // let recorded = wait(10000).then(
+  
   //   () => recorder.state == "recording" && recorder.stop()
+  
   // );
   
    console.log(recorder.state);
@@ -85,7 +89,7 @@ recorder.ondataavailable = event => data.push(event.data);
 
    stopped,
     
-    record
+   record
   
   ])
     
@@ -94,24 +98,28 @@ recorder.ondataavailable = event => data.push(event.data);
 }
 
 function stop() {
+
+  console.log("stop invoked, stopping stream")
   
   let streams = document.getElementById("preview").srcObject
   
   console.log(streams)
-  
+
   streams.getTracks().forEach(track => track.stop());
 
   document.getElementById("downloadButton").style.display = "flex"
   
-  let preview = document.getElementById("preview").srcObject;
+  // let preview = document.getElementById("preview").srcObject;
   
-  streams.srcObject
+  //   streams.srcObject
 
-  console.log(preview.srcObject)
+  //  console.log(preview.srcObject)
 
-  log("Recording Loading")
+  //  console.log("preview.srcObject")
   
-  console.log("stopped")
+  // log("Recording Loading")
+  
+  //console.log("stopped")
 
   document.getElementById("startButton").style.display = "flex"
       
@@ -121,8 +129,12 @@ function stop() {
 
 function start(){
 
-  console.log("Recording for " + Number(document.getElementById("valueNumber").value) * 1 + " minutes"),
+    // console.log("Recording for " + Number(document.getElementById("valueNumber").value) * 1 + " minutes"),
+   
+    let recording = document.getElementById("recording");
   
+    let downloadButton = document.getElementById("downloadButton");
+    
     navigator.mediaDevices.getUserMedia({
     
     video: true,
@@ -130,44 +142,54 @@ function start(){
     audio: true
       
     }).then(stream => {
-    let recording = document.getElementById("recording");
-    let downloadButton = document.getElementById("downloadButton");
-    let preview = document.getElementById("preview");
-    preview.srcObject = stream;
-    downloadButton.href = stream;
-    preview.captureStream = preview.captureStream || preview.mozCaptureStream;
-    return new Promise(resolve => preview.onplaying = resolve);
-    }).then(() => startRecording(preview.captureStream(),
-      0
+
+      let preview = document.getElementById("preview");
+      
+      preview.srcObject = stream;
+    
+      downloadButton.href = stream;
+    
+      preview.captureStream = preview.captureStream || preview.mozCaptureStream;
+    
+      return new Promise(resolve => preview.onplaying = resolve);
+    
+    }).then(() => startRecording(preview.captureStream()
+      
     ))
   
-    .then(recordedChunks => {
-    let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
-    recording.src = URL.createObjectURL(recordedBlob);
-    downloadButton.href = recording.src;
-    downloadButton.download = "RecordedVideo.webm";
-
-    log("Successfully recorded " + recordedBlob.size + " bytes of " +
-      recordedBlob.type + " media." , document.getElementById("downloadButton").style.display = "flex");
+      .then(recordedChunks => {
+        
+        let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+        
+        recording.src = URL.createObjectURL(recordedBlob);
+        
+        downloadButton.href = recording.src;
+    
+        downloadButton.download = "RecordedVideo.webm";
+    
+        console.log(recording.src)
+    
+        log("Successfully recorded " + recordedBlob.size + " bytes of " +
+      recordedBlob.type + " media.");
   
     })
   
   .catch(log);
 }
 
-function stopButton() {
+// function stopButton() {
   
-  let preview = document.getElementById("preview").srcObject;
+//   let preview = document.getElementById("preview").srcObject;
   
-  stop(preview.srcObject);
+//   stop(preview.srcObject);
 
-  console.log(preview.srcObject)
+//   console.log(preview.srcObject)
 
-  log("Recording Loading")
+//   log("Recording Loading")
   
-  console.log("stopped")
+//   console.log("stopped")
 
-}
+// }
 
 var pre = document.querySelector('pre');
 
@@ -200,20 +222,25 @@ if (navigator.mediaDevices) {
       
         // Create a MediaStreamAudioSourceNode
         // Feed the HTMLMediaElement into it
-        var audioCtx = new AudioContext();
-        var source = audioCtx.createMediaStreamSource(stream);
+      var audioCtx = new AudioContext();
+      
+      var source = audioCtx.createMediaStreamSource(stream);
 
         // Create a biquadfilter
-        var biquadFilter = audioCtx.createBiquadFilter();
-        biquadFilter.type = "lowshelf";
-        biquadFilter.frequency.value = 1000;
-        biquadFilter.gain.value = range.value;
+      var biquadFilter = audioCtx.createBiquadFilter();
+      
+      biquadFilter.type = "lowshelf";
+      
+      biquadFilter.frequency.value = 1000;
+      
+      biquadFilter.gain.value = range.value;
 
         // connect the AudioBufferSourceNode to the gainNode
         // and the gainNode to the destination, so we can play the
         // music and adjust the volume using the mouse cursor
         source.connect(biquadFilter);
-        biquadFilter.connect(audioCtx.destination);
+       
+      biquadFilter.connect(audioCtx.destination);
 
         // Get new mouse pointer coordinates when mouse is moved
         // then set new gain value
@@ -224,9 +251,9 @@ if (navigator.mediaDevices) {
       
       }
       
-      source.connect(analyser);
-      analyser.connect(distortion);
-      distortion.connect(audioCtx.destination);
+      // source.connect(analyser);
+      // analyser.connect(distortion);
+      // distortion.connect(audioCtx.destination);
 
       
 
@@ -253,20 +280,28 @@ const rangeInputs = document.querySelectorAll('input[type="range"]')
 const numberInput = document.querySelector('input[type="number"]')
 
 function handleInputChange(e) {
+ 
   let target = e.target
+ 
   if (e.target.type !== 'range') {
+ 
     target = document.getElementById('volumeRange')
-  } 
+ 
+  }
   
   const min = target.min
+ 
   const max = target.max
+ 
   const val = target.value
   
   target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
 }
 
 rangeInputs.forEach(input => {
+  
   input.addEventListener('input', handleInputChange)
+
 })
 
 numberInput.addEventListener('input', handleInputChange)
